@@ -1,0 +1,1 @@
+I would like to expand my work on the abortion dataset used here. I'd like to change the colors around and make it more interactive so you can see what each of the 9 laws are and how it impacts women/people of reproductive capacity in their real lives. Perhaps something zooming into a particularly restrictive state and seeing how people are impacted.
