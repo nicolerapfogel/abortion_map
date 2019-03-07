@@ -1,11 +1,12 @@
 Plotly.d3.csv('https://raw.githubusercontent.com/nicolerapfogel/abortiondata/master/data.csv', function(err, rows){
+    //push csv data to github above
     function unpack(rows, key) {
         return rows.map(function(row) { return row[key]; });
     }
 
 var data = [{
+            //use existing choropleth map of US via plotly
             type: 'choropleth',
-            //what is USA-states abbreviations?
             locationmode: 'USA-states',
             locations: unpack(rows, 'State'),
             z: unpack(rows, 'Restrictions'),
@@ -13,6 +14,7 @@ var data = [{
             //text: unpack(rows, 'State'),
             zmin: 0,
             zmax: 9,
+            //when editing again, try to personalize the colors somehow like this
             /*colorscale: [
               [0, 'rgb(255)'], [1, 'rgb(255,245,240)'], [2, 'rgb(254,224,210)'],
               [3, 'rgb(252,187,161)'], [4, 'rgb(252,146,114)'],
@@ -23,6 +25,7 @@ var data = [{
             title: 'Number of Laws',
             thickness: 0.4
           },
+          //borders
           marker: {
             line:{
               color: 'rgb(255,255,255)',
