@@ -1,46 +1,27 @@
-Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv', function(err, rows){
-    let df = pd_read_csv('data/data.csv')
-    let laws;
-
+Plotly.d3.csv('https://raw.githubusercontent.com/nicolerapfogel/abortiondata/master/data.csv', function(err, rows){
     function unpack(rows, key) {
         return rows.map(function(row) { return row[key]; });
     }
 
-    /*function preload(){
-        //table = loadTable("data/data.json", "header");
-    }
-
-    function setup(){
-        createCanvas(800, 800);
-        background(255);
-        loadData;
-    }
-
-    function loadData(){
-      //confuding
-        for(i=0; i<json.length; i++){
-            var laws = json.laws[i];
-            laws[i] = new Law('State', 'Abortion Restrictiveness')
-        }
-    }*/
-
 var data = [{
             type: 'choropleth',
+            //what is USA-states abbreviations?
             locationmode: 'USA-states',
-            locations: unpack(rows, 'code'),
-            z: unpack(rows, 'Anti-Abortion Laws'),
-            text: unpack(rows, 'state'),
+            locations: unpack(rows, 'State'),
+            z: unpack(rows, 'Restrictions'),
+            autocolorscale: true,
+            //text: unpack(rows, 'State'),
             zmin: 0,
-            zmax: 17000,
-            colorscale: [
-              [0, 'rgb(255)'], [0.1, 'rgb(255,245,240)'], [0.2, 'rgb(254,224,210)'],
-              [0.3, 'rgb(252,187,161)'], [0.4, 'rgb(252,146,114)'],
-              [0.5, 'rgb(251,106,74)'], [0.6, 'rgb(239,59,44)'],
-              [0.7, 'rgb(203,24,29)'], [0.8, 'rgb()'], [0.9, 'rgb()'], [1.0, 'rgb()']
-            ],
+            zmax: 9,
+            /*colorscale: [
+              [0, 'rgb(255)'], [1, 'rgb(255,245,240)'], [2, 'rgb(254,224,210)'],
+              [3, 'rgb(252,187,161)'], [4, 'rgb(252,146,114)'],
+              [5, 'rgb(251,106,74)'], [6, 'rgb(239,59,44)'],
+              [7, 'rgb(203,24,29)', [8, 'rgb(0, 255, 0'], [9, 'rgb(0, 0, 255']]
+            ],*/
           colorbar: {
             title: 'Number of Laws',
-            thickness: 0.2
+            thickness: 0.4
           },
           marker: {
             line:{
